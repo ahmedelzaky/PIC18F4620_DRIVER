@@ -14,7 +14,9 @@ volatile uint8_t *port_reg[] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
 /**
  * 
  * @param _pin_config   @ref pin_config_t
- * @return 
+ * @return  Status of the function
+ *         (E_OK) : The function done successfully
+ *         (E_NOT_OK) : The function has issue to perform this actionn
  */
 
 #if PIN_CONFIGRATIONS
@@ -122,6 +124,10 @@ Std_ReturnType gpio_pin_intialize(const pin_config_t * _pin_config)
     if (_pin_config == NULL || gpio_pin_direction_intialize(_pin_config) || gpio_pin_write_logic(_pin_config, _pin_config->logic))
     {
         ret = E_NOT_OK;
+    }
+    else
+    {
+        //NOTHING
     }
     return ret;
 }
