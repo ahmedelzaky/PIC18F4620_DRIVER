@@ -8,44 +8,29 @@
 #include "Application.h"
 
 #define LEDS_COUNT  8
-#define LEDS_SQUENCE_COUNT  17
 
 led_t leds[LEDS_COUNT] = {
-    {.port = PORTC_INDEX, .pin = PIN0, .led_status = LED_OFF},
-    {.port = PORTC_INDEX, .pin = PIN1, .led_status = LED_OFF},
-    {.port = PORTC_INDEX, .pin = PIN2, .led_status = LED_OFF},
-    {.port = PORTC_INDEX, .pin = PIN3, .led_status = LED_OFF},
-    {.port = PORTC_INDEX, .pin = PIN4, .led_status = LED_OFF},
-    {.port = PORTC_INDEX, .pin = PIN5, .led_status = LED_OFF},
-    {.port = PORTC_INDEX, .pin = PIN6, .led_status = LED_OFF},
-    {.port = PORTC_INDEX, .pin = PIN7, .led_status = LED_OFF}
-};
-uint8_t led_squence[][LEDS_SQUENCE_COUNT] = {
-    {0, 0, 0, 0, 0, 0, 0, 1},
-    {0, 0, 0, 0, 0, 0, 1, 1},
-    {0, 0, 0, 0, 0, 1, 1, 1},
-    {0, 0, 0, 0, 1, 1, 1, 1},
-    {0, 0, 0, 1, 1, 1, 1, 1},
-    {0, 0, 1, 1, 1, 1, 1, 1},
-    {0, 1, 1, 1, 1, 1, 1, 1},
-    {1, 1, 1, 1, 1, 1, 1, 1},
-    {1, 1, 1, 0, 0, 1, 1, 1},
-    {1, 1, 0, 0, 0, 0, 1, 1},
-    {1, 0, 0, 0, 0, 0, 0, 1},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 1, 1, 0, 0, 0},
-    {0, 0, 1, 1, 1, 1, 0, 0},
-    {0, 1, 1, 1, 1, 1, 1, 0},
-    {1, 1, 1, 1, 1, 1, 1, 1},
-    {0, 0, 0, 0, 0, 0, 0, 0},
+    {.port = PORTC_INDEX, .pin = PIN0, .led_state = LED_OFF},
+    {.port = PORTC_INDEX, .pin = PIN1, .led_state = LED_OFF},
+    {.port = PORTC_INDEX, .pin = PIN2, .led_state = LED_OFF},
+    {.port = PORTC_INDEX, .pin = PIN3, .led_state = LED_OFF},
+    {.port = PORTC_INDEX, .pin = PIN4, .led_state = LED_OFF},
+    {.port = PORTC_INDEX, .pin = PIN5, .led_state = LED_OFF},
+    {.port = PORTC_INDEX, .pin = PIN6, .led_state = LED_OFF},
+    {.port = PORTC_INDEX, .pin = PIN7, .led_state = LED_OFF}
 };
 
 
-pin_config_t btn_1 = {
-    .direction = INPUT,
-    .logic = LOW,
+button_t btn_1 = {
     .port = PORTD_INDEX,
-    .pin = PIN0
+    .pin = PIN0,
+    .btn_connection = BUTTON_PULLUP,
+};
+
+button_t btn_2 = {
+    .port = PORTD_INDEX,
+    .pin = PIN1,
+    .btn_connection = BUTTON_PULLDOWN,
 };
 
 void setup(void)
@@ -54,23 +39,39 @@ void setup(void)
     {
         led_initialize(&(leds[i]));
     }
+    button_initialize(&btn_1);
+    button_initialize(&btn_2);
 }
 
 int main(void)
 {
     setup();
+    button_state_t btn_1_state;
+    button_state_t btn_2_state;
+
     while (1)
     {
-        for (int i = 0; i < LEDS_SQUENCE_COUNT; i++)
+        button_read_state(&btn_1, &btn_1_state);
+        if (btn_1_state)
         {
-            for (int j = 0; j < LEDS_COUNT; j++)
+            led_turn_toggle(&leds[0]);
+            while (btn_1_state)
             {
-                led_squence[i][j] ? led_turn_on(&(leds[j])) : led_turn_off(&(leds[j]));
+                button_read_state(&btn_1, &btn_1_state);
             }
-            __delay_ms(500);
         }
-    }
 
+        button_read_state(&btn_2, &btn_2_state);
+        if (btn_2_state)
+        {
+            led_turn_toggle(&leds[1]);
+            while (btn_2_state)
+            {
+                button_read_state(&btn_2, &btn_2_state);
+            }
+        }
+
+    }
     return 0;
 }
 
