@@ -14,6 +14,7 @@
 #include <stdint.h>
 #include "ECU_Layer/led/ecu_led.h"
 #include "ECU_Layer/button/ecu_button.h"
+#include "ECU_Layer/relay/ecu_relay.h"
 
 /* Section: Macros */
 
