@@ -5,24 +5,25 @@
  * Created on September 9, 2023, 10:01 PM
  */
 
-#include "ECU_Layer/relay/ecu_relay.h"
+#include "Application.h"
 
-relay_t relay_1 = {
-    .pin = PIN0,
-    .port = PORTC_INDEX,
-    .relay_state = RELAY_OFF,
+dc_motor_t m1 = {
+    .pin_1 =
+    {.pin = PIN0, .port = PORTC_INDEX, .state = HIGH},
+    .pin_2 =
+    {.pin = PIN1, .port = PORTC_INDEX, .state = LOW}
 };
-
-relay_t relay_2 = {
-    .pin = PIN1,
-    .port = PORTC_INDEX,
-    .relay_state = RELAY_OFF,
+dc_motor_t m2 = {
+    .pin_1 =
+    {.pin = PIN2, .port = PORTC_INDEX, .state = HIGH},
+    .pin_2 =
+    {.pin = PIN3, .port = PORTC_INDEX, .state = LOW}
 };
 
 void setup(void)
 {
-    relay_initialize(&relay_1);
-    relay_initialize(&relay_2);
+    motor_initialize(&m1);
+    motor_initialize(&m2);
 }
 
 int main(void)
@@ -31,12 +32,21 @@ int main(void)
 
     while (1)
     {
-        relay_turn_on(&relay_1);
-        relay_turn_off(&relay_2);
-        __delay_ms(5000);
-        relay_turn_off(&relay_1);
-        relay_turn_on(&relay_2);
-        __delay_ms(5000);
+        motor_move_right(&m1);
+        motor_move_right(&m2);
+        __delay_ms(3000);
+        motor_move_left(&m1);
+        motor_move_left(&m2);
+        __delay_ms(3000);
+        motor_stop(&m1);
+        motor_stop(&m2);
+        __delay_ms(3000);
+        motor_move_left(&m1);
+        motor_move_right(&m2);
+        __delay_ms(3000);
+        motor_move_right(&m1);
+        motor_move_left(&m2);
+        __delay_ms(3000);
 
 
     }
