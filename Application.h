@@ -15,7 +15,8 @@
 #include "ECU_Layer/led/ecu_led.h"
 #include "ECU_Layer/button/ecu_button.h"
 #include "ECU_Layer/relay/ecu_relay.h"
-#include "ECU_Layer/dc_motor/dc_motor.h"
+#include "ECU_Layer/dc_motor/ecu_dc_motor.h"
+#include "ECU_Layer/7_segment/ecu_seven_seg.h"
 
 /* Section: Macros */
 
