@@ -5,7 +5,7 @@
  * Created on September 20, 2023, 10:41 PM
  */
 
-#include "dc_motor.h"
+#include "ecu_dc_motor.h"
 
 static pin_config_t motor_create_pin(dc_motor_pin_t *motor_pin)
 {
