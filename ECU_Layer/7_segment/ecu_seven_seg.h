@@ -35,7 +35,6 @@ typedef struct {
 
 
 /* Section: Function Declaration */
-static pin_config_t *segment_create_pins(segment_t *segment);
 Std_ReturnType segment_initialize(segment_t *segment);
 Std_ReturnType segment_write_number(segment_t *segment, uint8_t number);
 

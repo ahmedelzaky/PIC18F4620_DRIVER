@@ -33,7 +33,6 @@ typedef struct {
 
 
 /* Section: Function Declaration */
-static pin_config_t led_create_pin(led_t *led);
 Std_ReturnType led_initialize(led_t *led);
 Std_ReturnType led_turn_on(led_t *led);
 Std_ReturnType led_turn_off(led_t *led);

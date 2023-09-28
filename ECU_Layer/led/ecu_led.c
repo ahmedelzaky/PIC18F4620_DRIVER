@@ -24,6 +24,13 @@ static pin_config_t led_create_pin(led_t *led)
     return led_pin;
 }
 
+/**
+ * 
+ * @param led
+ * @return Status of the function
+ *         (E_OK) : The function done successfully
+ *         (E_NOT_OK) : The function has issue to perform this actionn
+ */
 Std_ReturnType led_initialize(led_t *led)
 {
     Std_ReturnType ret = E_OK;

@@ -6,6 +6,7 @@
  */
 
 #include "Application.h"
+#include "ECU_Layer/keypad/ecu_keypad.h"
 
 segment_t seg = {
     .segment_type = COMMON_ANODE,
@@ -19,12 +20,33 @@ segment_t seg = {
     {.port = PORTC_INDEX, .pin = PIN3, .state = LOW},
 
 };
+keypad_t keypad = {
+    .keypad_rows_pins[0].port = PORTD_INDEX,
+    .keypad_rows_pins[0].pin = PIN0,
+    .keypad_rows_pins[1].port = PORTD_INDEX,
+    .keypad_rows_pins[1].pin = PIN1,
+    .keypad_rows_pins[2].port = PORTD_INDEX,
+    .keypad_rows_pins[2].pin = PIN2,
+    .keypad_rows_pins[3].port = PORTD_INDEX,
+    .keypad_rows_pins[3].pin = PIN3,
+
+    .keypad_colums_pins[0].port = PORTD_INDEX,
+    .keypad_colums_pins[0].pin = PIN4,
+    .keypad_colums_pins[1].port = PORTD_INDEX,
+    .keypad_colums_pins[1].pin = PIN5,
+    .keypad_colums_pins[2].port = PORTD_INDEX,
+    .keypad_colums_pins[2].pin = PIN6,
+    .keypad_colums_pins[3].port = PORTD_INDEX,
+    .keypad_colums_pins[3].pin = PIN7,
+};
+
+char keypad_char = '5';
 
 void setup(void)
 {
     segment_initialize(&seg);
+    keypad_initialize(&keypad);
 }
-uint8_t x = 0;
 
 int main(void)
 {
@@ -32,11 +54,8 @@ int main(void)
 
     while (1)
     {
-        for (uint8_t i = 0; i <= 9; i++)
-        {
-            segment_write_number(&seg, i);
-            __delay_ms(1000);
-        }
+        keypad_get_value(&keypad, &keypad_char);
+        segment_write_number(&seg, (uint8_t) (keypad_char - '0'));
     }
     return 0;
 }

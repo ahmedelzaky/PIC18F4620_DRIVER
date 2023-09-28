@@ -7,6 +7,11 @@
 
 #include "ecu_seven_seg.h"
 
+/**
+ * 
+ * @param segment
+ * @return pointer to array of segment pins config
+ */
 static pin_config_t *segment_create_pins(segment_t *segment)
 {
     pin_config_t *segment_pins = malloc(sizeof (pin_config_t) * 4);
@@ -25,7 +30,7 @@ static pin_config_t *segment_create_pins(segment_t *segment)
     segment_pins[2].port = segment->pin_C.port;
     segment_pins[2].pin = segment->pin_C.pin;
     segment_pins[2].logic = segment->pin_C.state;
-    
+
     segment_pins[3].direction = OUTPUT;
     segment_pins[3].port = segment->pin_D.port;
     segment_pins[3].pin = segment->pin_D.pin;

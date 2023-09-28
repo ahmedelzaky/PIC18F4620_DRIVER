@@ -35,7 +35,6 @@ typedef struct {
 
 
 /* Section: Function Declaration */
-static pin_config_t motor_create_pin(dc_motor_pin_t *motor);
 Std_ReturnType motor_initialize(dc_motor_t *motor);
 Std_ReturnType motor_move_left(dc_motor_t *motor);
 Std_ReturnType motor_move_right(dc_motor_t *motor);
