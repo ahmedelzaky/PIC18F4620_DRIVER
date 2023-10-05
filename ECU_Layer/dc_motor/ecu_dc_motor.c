@@ -1,5 +1,5 @@
 /* 
- * File:   dc_motor.h
+ * File:   dc_motor.c
  * Author: zekwa
  *
  * Created on September 20, 2023, 10:41 PM

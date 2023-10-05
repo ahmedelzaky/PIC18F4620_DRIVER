@@ -9,10 +9,9 @@
 
 /**
  * 
- * @param btn
- * @return relay pin configuration 
+ * @param relay
+ * @return relay pin config
  */
-
 static pin_config_t relay_create_pin(relay_t *relay)
 {
     pin_config_t relay_pin = {
@@ -24,6 +23,13 @@ static pin_config_t relay_create_pin(relay_t *relay)
     return relay_pin;
 }
 
+/**
+ * 
+ * @param relay
+ * @return  Status of the function
+ *         (E_OK) : The function done successfully
+ *         (E_NOT_OK) : The function has issue to perform this action
+ */
 Std_ReturnType relay_initialize(relay_t *relay)
 {
     Std_ReturnType ret = E_OK;
@@ -39,6 +45,13 @@ Std_ReturnType relay_initialize(relay_t *relay)
     return ret;
 }
 
+/**
+ * 
+ * @param relay
+ * @return  Status of the function
+ *         (E_OK) : The function done successfully
+ *         (E_NOT_OK) : The function has issue to perform this action
+ */
 Std_ReturnType relay_turn_on(relay_t *relay)
 {
     Std_ReturnType ret = E_OK;
@@ -54,6 +67,13 @@ Std_ReturnType relay_turn_on(relay_t *relay)
     return ret;
 }
 
+/**
+ * 
+ * @param relay
+ * @return  Status of the function
+ *         (E_OK) : The function done successfully
+ *         (E_NOT_OK) : The function has issue to perform this action
+ */
 Std_ReturnType relay_turn_off(relay_t *relay)
 {
     Std_ReturnType ret = E_OK;

@@ -12,7 +12,7 @@
 /**
  * 
  * @param led
- * @return   led pin configuration
+ * @return led pin configuration
  */
 static pin_config_t led_create_pin(led_t *led)
 {
