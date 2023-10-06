@@ -330,7 +330,8 @@ Std_ReturnType lcd_8bit_intialize(const lcd_8bit_t *lcd) {
         __delay_us(150);
         ret = lcd_8bit_send_command(lcd, _LCD_8BIT_MODE_2_LINE);
 
-        ret = lcd_8bit_send_command(lcd, _LCD_RETURN_HOME);
+        ret = lcd_8bit_send_command(lcd, _LCD_8BIT_MODE_2_LINE);
+
         ret = lcd_8bit_send_command(lcd, _LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF);
 
         ret = lcd_8bit_send_command(lcd, _LCD_CLEAR);
