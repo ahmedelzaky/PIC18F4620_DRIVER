@@ -89,19 +89,23 @@ Std_ReturnType lcd_4bit_intialize(const lcd_4bit_t *lcd) {
             ret = gpio_pin_intialize(&pin);
         }
 
-        __delay_ms(20);
+        __delay_ms(40);
         ret = lcd_4bit_send_command(lcd, _LCD_8BIT_MODE_2_LINE);
         __delay_ms(5);
         ret = lcd_4bit_send_command(lcd, _LCD_8BIT_MODE_2_LINE);
         __delay_us(150);
         ret = lcd_4bit_send_command(lcd, _LCD_8BIT_MODE_2_LINE);
 
-        ret = lcd_4bit_send_command(lcd, _LCD_CLEAR);
         ret = lcd_4bit_send_command(lcd, _LCD_RETURN_HOME);
-        ret = lcd_4bit_send_command(lcd, _LCD_ENTRY_MODE_INC_SHIFT_OFF);
+
         ret = lcd_4bit_send_command(lcd, _LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF);
+
+        ret = lcd_4bit_send_command(lcd, _LCD_CLEAR);
+        __delay_ms(2);
+
+        ret = lcd_4bit_send_command(lcd, _LCD_ENTRY_MODE_INC_SHIFT_OFF);
+
         ret = lcd_4bit_send_command(lcd, _LCD_4BIT_MODE_2_LINE);
-        ret = lcd_4bit_send_command(lcd, _LCD_RETURN_HOME);
 
     }
     return ret;
@@ -319,16 +323,21 @@ Std_ReturnType lcd_8bit_intialize(const lcd_8bit_t *lcd) {
             pin = lcd_create_pin_config(&(lcd->lcd_data_pins[i]));
             ret = gpio_pin_intialize(&pin);
         }
-        __delay_ms(20);
+        __delay_ms(40);
         ret = lcd_8bit_send_command(lcd, _LCD_8BIT_MODE_2_LINE);
         __delay_ms(5);
         ret = lcd_8bit_send_command(lcd, _LCD_8BIT_MODE_2_LINE);
         __delay_us(150);
         ret = lcd_8bit_send_command(lcd, _LCD_8BIT_MODE_2_LINE);
-        ret = lcd_8bit_send_command(lcd, _LCD_CLEAR);
+
         ret = lcd_8bit_send_command(lcd, _LCD_RETURN_HOME);
-        ret = lcd_8bit_send_command(lcd, _LCD_ENTRY_MODE_INC_SHIFT_OFF);
         ret = lcd_8bit_send_command(lcd, _LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF);
+
+        ret = lcd_8bit_send_command(lcd, _LCD_CLEAR);
+        __delay_ms(2);
+
+        ret = lcd_8bit_send_command(lcd, _LCD_ENTRY_MODE_INC_SHIFT_OFF);
+
     }
     return ret;
 }
