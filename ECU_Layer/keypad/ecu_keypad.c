@@ -56,7 +56,7 @@ Std_ReturnType keypad_initialize(keypad_t *keypad) {
         }
 
         for (int i = 0; i < KEYPAD_COLUMS; i++) {
-            pin_config_t col_pin = keypad_create_row_pin(&(keypad->keypad_colums_pins[i]));
+            pin_config_t col_pin = keypad_create_col_pin(&(keypad->keypad_colums_pins[i]));
             ret = gpio_pin_intialize(&col_pin);
         }
     }
@@ -90,7 +90,7 @@ Std_ReturnType keypad_get_value(keypad_t *keypad, char *c) {
 
             logic_t pin_state;
             for (int z = 0; z < KEYPAD_COLUMS; z++) {
-                pin_config_t col_pin = keypad_create_row_pin(&(keypad->keypad_colums_pins[z]));
+                pin_config_t col_pin = keypad_create_col_pin(&(keypad->keypad_colums_pins[z]));
                 gpio_pin_read_logic(&(col_pin), &pin_state);
                 if (pin_state == HIGH) {
                     *c = keypad_charcters_map[i][z];
