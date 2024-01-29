@@ -8,7 +8,6 @@
 #include "Application.h"
 
 void setup(void) {
-
 }
 
 int main(void) {

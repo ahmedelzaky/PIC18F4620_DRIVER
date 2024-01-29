@@ -45,7 +45,6 @@ Std_ReturnType gpio_pin_direction_intialize(const pin_config_t * _pin_config)
     return ret;
 }
 
-#endif
 
 /**
  * 
@@ -55,7 +54,6 @@ Std_ReturnType gpio_pin_direction_intialize(const pin_config_t * _pin_config)
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-#if PIN_CONFIGRATIONS 
 
 Std_ReturnType gpio_pin_get_direction_status(const pin_config_t * _pin_config, direction_t *direction)
 {
@@ -70,7 +68,7 @@ Std_ReturnType gpio_pin_get_direction_status(const pin_config_t * _pin_config, d
     }
     return ret;
 }
-#endif
+
 
 /**
  * 
@@ -80,7 +78,6 @@ Std_ReturnType gpio_pin_get_direction_status(const pin_config_t * _pin_config, d
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-#if PIN_CONFIGRATIONS 
 
 Std_ReturnType gpio_pin_write_logic(const pin_config_t * _pin_config, logic_t logic)
 {
@@ -106,7 +103,6 @@ Std_ReturnType gpio_pin_write_logic(const pin_config_t * _pin_config, logic_t lo
     }
     return ret;
 }
-#endif
 
 /**
  * 
@@ -116,7 +112,6 @@ Std_ReturnType gpio_pin_write_logic(const pin_config_t * _pin_config, logic_t lo
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
 
-#if PIN_CONFIGRATIONS 
 
 Std_ReturnType gpio_pin_intialize(const pin_config_t * _pin_config)
 {
@@ -131,7 +126,6 @@ Std_ReturnType gpio_pin_intialize(const pin_config_t * _pin_config)
     }
     return ret;
 }
-#endif
 
 /**
  * 
@@ -142,7 +136,6 @@ Std_ReturnType gpio_pin_intialize(const pin_config_t * _pin_config)
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
 
-#if PIN_CONFIGRATIONS 
 
 Std_ReturnType gpio_pin_read_logic(const pin_config_t * _pin_config, logic_t *logic)
 {
@@ -158,7 +151,6 @@ Std_ReturnType gpio_pin_read_logic(const pin_config_t * _pin_config, logic_t *lo
     }
     return ret;
 }
-#endif
 
 /**
  * 
@@ -167,7 +159,6 @@ Std_ReturnType gpio_pin_read_logic(const pin_config_t * _pin_config, logic_t *lo
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-#if PIN_CONFIGRATIONS 
 
 Std_ReturnType gpio_pin_toggle_logic(const pin_config_t * _pin_config)
 {
@@ -208,7 +199,6 @@ Std_ReturnType gpio_port_direction_intialize(port_index_t port, uint8_t directio
     }
     return ret;
 }
-#endif
 
 /**
  * 
@@ -218,7 +208,6 @@ Std_ReturnType gpio_port_direction_intialize(port_index_t port, uint8_t directio
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-#if PORT_CONFIGRATIONS 
 
 Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *direction)
 {
@@ -233,7 +222,6 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *direct
     }
     return ret;
 }
-#endif
 
 /**
  * 
@@ -243,7 +231,6 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *direct
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-#if PORT_CONFIGRATIONS 
 
 Std_ReturnType gpio_port_write_logic(port_index_t port, uint8_t logic)
 {
@@ -258,7 +245,6 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8_t logic)
     }
     return ret;
 }
-#endif
 
 /**
  * 
@@ -268,7 +254,6 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8_t logic)
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-#if PORT_CONFIGRATIONS 
 
 Std_ReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic)
 {
@@ -283,7 +268,6 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic)
     }
     return ret;
 }
-#endif
 
 /**
  * 
@@ -292,7 +276,6 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic)
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-#if PORT_CONFIGRATIONS 
 
 Std_ReturnType gpio_port_toggle_logic(port_index_t port)
 {
