@@ -5,6 +5,7 @@
         <group>
             <file>file:/D:/study/interfacing/Master_Embedded_Diploma/PIC18F46K20_DRIVER/MCAL_Layer/GPIO/hal_gpio.c</file>
             <file>file:/D:/study/interfacing/Master_Embedded_Diploma/PIC18F46K20_DRIVER/Application.c</file>
+            <file>file:/D:/study/interfacing/Master_Embedded_Diploma/PIC18F46K20_DRIVER/MCAL_Layer/GPIO/hal_gpio.h</file>
         </group>
     </open-files>
 </project-private>

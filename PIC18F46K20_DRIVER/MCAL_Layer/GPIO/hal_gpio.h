@@ -18,7 +18,7 @@
 #define BIT_MASK (uint8_t)1
 #define PINS_MAX_COUNT 8
 #define PORTS_MAX_COUNT 5
-#define PIN_CONFIGRATIONS DISABLE
+#define PIN_CONFIGRATIONS ENABLE
 #define PORT_CONFIGRATIONS ENABLE
 
 /* Section: Macro Functions */
