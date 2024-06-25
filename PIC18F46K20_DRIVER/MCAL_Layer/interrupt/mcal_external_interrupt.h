@@ -10,6 +10,7 @@
 
 /* ----------------- Includes -----------------*/
 #include "mcal_interrupt_config.h"
+#include "../GPIO/hal_gpio.h"
 
 /* ----------------- Macro Declarations -----------------*/
 
@@ -48,7 +49,7 @@
 /* This routine set the edge detect of the extern interrupt to positive edge */
 #define EXT_INT2_FallingEdgeSet()           (INTCON2bits.INTEDG2 = 0)
 
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE 
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_PRIORITY_LEVELS_ENABLE 
 /* This routine set the INT1 External Interrupt Priority to be High priority */
 #define EXT_INT1_HighPrioritySet()           (INTCON3bits.INT1IP = 1)
 /* This routine set the INT1 External Interrupt Priority to be Low priority */
@@ -69,7 +70,7 @@
 /* This routine clears the interrupt flag for the external interrupt, RBx */
 #define EXT_RBx_InterruptFlagClear()       (INTCONbits.RBIF = 0)
 
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE 
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_PRIORITY_LEVELS_ENABLE 
 /* This routine set the RBx External Interrupt Priority to be High priority */
 #define EXT_RBx_Priority_High()            (INTCON2bits.RBIP = 1)
 /* This routine set the RBx External Interrupt Priority to be Low priority */
@@ -101,8 +102,7 @@ typedef struct {
 } interrupt_INTx_t;
 
 typedef struct {
-    void (* EXT_InterruptHandler_HIGH)(void);
-    void (* EXT_InterruptHandler_LOW)(void);
+    void (* EXT_InterruptHandler)(void);
     pin_config_t mcu_pin;
     interrupt_priority_cfg priority;
 } interrupt_RBx_t;

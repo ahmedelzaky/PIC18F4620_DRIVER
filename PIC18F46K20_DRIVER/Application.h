@@ -19,6 +19,7 @@
 #include "ECU_Layer/7_segment/ecu_seven_seg.h"
 #include "ECU_Layer/keypad/ecu_keypad.h"
 #include "ECU_Layer/lcd/ecu_lcd.h"
+#include "MCAL_Layer/interrupt/mcal_external_interrupt.h"
 
 /* Section: Macros */
 
