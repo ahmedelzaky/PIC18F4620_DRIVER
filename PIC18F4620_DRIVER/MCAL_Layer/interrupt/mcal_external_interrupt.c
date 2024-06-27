@@ -31,9 +31,6 @@ static Std_ReturnType Interrupt_INTx_Clear_Flag(const interrupt_INTx_t *int_obj)
 static Std_ReturnType Intx_handler_settetr(const interrupt_INTx_t *int_obj);
 static Std_ReturnType rbx_handler_settetr(const interrupt_RBx_t *int_obj);
 
-//static Std_ReturnType Interrupt_RBx_Enable(const interrupt_RBx_t *int_obj);
-//static Std_ReturnType Interrupt_RBx_Disable(const interrupt_RBx_t *int_obj);
-//static Std_ReturnType Interrupt_RBx_Priority_Init(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj);
 
 Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *int_obj) {
@@ -271,13 +268,9 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj) {
     return ret;
 }
 
-Std_ReturnType Interrupt_RBx_DInit(const interrupt_RBx_t *int_obj) {
-    Std_ReturnType ret = E_OK;
-    if (NULL == int_obj) {
-        ret = E_NOT_OK;
-    } else {
-    }
-    return ret;
+Std_ReturnType Interrupt_RBx_DInit() {
+    EXT_RBx_InterruptDisable();
+    return E_OK;
 }
 
 static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj) {
