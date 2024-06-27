@@ -102,7 +102,8 @@ typedef struct {
 } interrupt_INTx_t;
 
 typedef struct {
-    void (* EXT_InterruptHandler)(void);
+    void (* EXT_InterruptHandler_LOW)(void);
+    void (* EXT_InterruptHandler_HIGH)(void);
     pin_config_t mcu_pin;
     interrupt_priority_cfg priority;
 } interrupt_RBx_t;

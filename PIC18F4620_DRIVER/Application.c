@@ -30,12 +30,20 @@ led_t led3 = {
     .port = PORTC_INDEX,
 };
 
-void RB4_Int_APP_ISR(void) {
+void RB4_Int_APP_ISR_HIGH(void) {
     led_turn_toggle(&led0);
+    __delay_ms(250);
+}
+
+void RB4_Int_APP_ISR_LOW(void) {
+    led_turn_toggle(&led1);
+    __delay_ms(250);
+
 }
 
 interrupt_RBx_t int_obj = {
-    .EXT_InterruptHandler = RB4_Int_APP_ISR,
+    .EXT_InterruptHandler_HIGH = RB4_Int_APP_ISR_HIGH,
+    .EXT_InterruptHandler_LOW = RB4_Int_APP_ISR_LOW,
     .priority = 1,
     .mcu_pin.direction = INPUT,
     .mcu_pin.pin = PIN4,
@@ -54,20 +62,5 @@ int main(void) {
     while (1) {
     }
     return 0;
-}
-
-void int0_app_isr(void) {
-    led_turn_toggle(&led0);
-
-}
-
-void int1_app_isr(void) {
-    led_turn_toggle(&led1);
-
-}
-
-void int2_app_isr(void) {
-    led_turn_toggle(&led2);
-
 }
 
