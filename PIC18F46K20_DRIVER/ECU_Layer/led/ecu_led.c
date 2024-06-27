@@ -14,8 +14,7 @@
  * @param led
  * @return led pin configuration
  */
-static pin_config_t led_create_pin(led_t *led)
-{
+static pin_config_t led_create_pin(led_t *led) {
     pin_config_t led_pin = {.port = led->port,
         .pin = led->pin,
         .logic = led->led_state,
@@ -31,15 +30,11 @@ static pin_config_t led_create_pin(led_t *led)
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-Std_ReturnType led_initialize(led_t *led)
-{
+Std_ReturnType led_initialize(led_t *led) {
     Std_ReturnType ret = E_OK;
-    if (led == NULL)
-    {
+    if (led == NULL) {
         ret = E_NOT_OK;
-    }
-    else
-    {
+    } else {
         pin_config_t led_pin = led_create_pin(led);
         ret = gpio_pin_intialize(&led_pin);
     }
@@ -53,15 +48,11 @@ Std_ReturnType led_initialize(led_t *led)
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-Std_ReturnType led_turn_on(led_t *led)
-{
+Std_ReturnType led_turn_on(led_t *led) {
     Std_ReturnType ret = E_OK;
-    if (led == NULL)
-    {
+    if (led == NULL) {
         ret = E_NOT_OK;
-    }
-    else
-    {
+    } else {
         pin_config_t led_pin_value = led_create_pin(led);
         ret = gpio_pin_write_logic(&led_pin_value, HIGH);
     }
@@ -75,15 +66,11 @@ Std_ReturnType led_turn_on(led_t *led)
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-Std_ReturnType led_turn_off(led_t *led)
-{
+Std_ReturnType led_turn_off(led_t *led) {
     Std_ReturnType ret = E_OK;
-    if (led == NULL)
-    {
+    if (led == NULL) {
         ret = E_NOT_OK;
-    }
-    else
-    {
+    } else {
         pin_config_t led_pin_value = led_create_pin(led);
         ret = gpio_pin_write_logic(&led_pin_value, LOW);
     }
@@ -97,15 +84,11 @@ Std_ReturnType led_turn_off(led_t *led)
  *         (E_OK) : The function done successfully
  *         (E_NOT_OK) : The function has issue to perform this actionn
  */
-Std_ReturnType led_turn_toggle(led_t *led)
-{
+Std_ReturnType led_turn_toggle(led_t *led) {
     Std_ReturnType ret = E_OK;
-    if (led == NULL)
-    {
+    if (led == NULL) {
         ret = E_NOT_OK;
-    }
-    else
-    {
+    } else {
         pin_config_t led_pin_value = led_create_pin(led);
         ret = gpio_pin_toggle_logic(&led_pin_value);
     }
