@@ -46,9 +46,7 @@ void setup(void) {
     led_initialize(&led0);
     led_initialize(&led1);
     led_initialize(&led2);
-    Interrupt_INTx_Init(&int0_obj);
-    Interrupt_INTx_Init(&int1_obj);
-    Interrupt_INTx_Init(&int2_obj);
+    Interrupt_RBx_Init(&int_obj);
 }
 
 int main(void) {
