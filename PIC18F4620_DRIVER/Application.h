@@ -20,6 +20,7 @@
 #include "ECU_Layer/keypad/ecu_keypad.h"
 #include "ECU_Layer/lcd/ecu_lcd.h"
 #include "MCAL_Layer/interrupt/mcal_external_interrupt.h"
+#include "MCAL_Layer/EEPROM/hal_eeprom.h"
 
 /* Section: Macros */
 
