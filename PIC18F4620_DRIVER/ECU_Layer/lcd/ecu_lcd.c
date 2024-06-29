@@ -528,16 +528,23 @@ Std_ReturnType lcd_8bit_clear(const lcd_8bit_t *lcd) {
  * @param value
  * @param str
  * @return Status of the function
- *         (E_OK) : The function done successfully
- *         (E_NOT_OK) : The function has issue to perform this action
+ *          (E_OK) : The function done successfully
+ *          (E_NOT_OK) : The function has issue to perform this action
  */
 Std_ReturnType convert_uint8_to_string(uint8_t value, char *str) {
     Std_ReturnType ret = E_OK;
-    if (str == NULL) {
+    char Temp_String[4] = {0};
+    uint8_t DataCounter = 0;
+    if (NULL == str) {
         ret = E_NOT_OK;
     } else {
-        memset(str, '\0', 4);
-        sprintf(str, "%i", value);
+        memset(str, ' ', 5);
+        str[3] = '\0';
+        sprintf(Temp_String, "%i", value);
+        while (Temp_String[DataCounter] != '\0') {
+            str[DataCounter] = Temp_String[DataCounter];
+            DataCounter++;
+        }
     }
     return ret;
 }
@@ -547,16 +554,23 @@ Std_ReturnType convert_uint8_to_string(uint8_t value, char *str) {
  * @param value
  * @param str
  * @return Status of the function
- *         (E_OK) : The function done successfully
- *         (E_NOT_OK) : The function has issue to perform this action
+ *          (E_OK) : The function done successfully
+ *          (E_NOT_OK) : The function has issue to perform this action
  */
 Std_ReturnType convert_uint16_to_string(uint16_t value, char *str) {
     Std_ReturnType ret = E_OK;
-    if (str == NULL) {
+    char Temp_String[6] = {0};
+    uint8_t DataCounter = 0;
+    if (NULL == str) {
         ret = E_NOT_OK;
     } else {
-        memset(str, '\0', 6);
-        sprintf(str, "%i", value);
+        memset(str, ' ', 5);
+        str[5] = '\0';
+        sprintf((char *) Temp_String, "%i", value);
+        while (Temp_String[DataCounter] != '\0') {
+            str[DataCounter] = Temp_String[DataCounter];
+            DataCounter++;
+        }
     }
     return ret;
 }
@@ -566,18 +580,23 @@ Std_ReturnType convert_uint16_to_string(uint16_t value, char *str) {
  * @param value
  * @param str
  * @return Status of the function
- *         (E_OK) : The function done successfully
- *         (E_NOT_OK) : The function has issue to perform this action
+ *          (E_OK) : The function done successfully
+ *          (E_NOT_OK) : The function has issue to perform this action
  */
 Std_ReturnType convert_uint32_to_string(uint32_t value, char *str) {
     Std_ReturnType ret = E_OK;
-    if (str == NULL) {
+    char Temp_String[12] = {0};
+    uint8_t DataCounter = 0;
+    if (NULL == str) {
         ret = E_NOT_OK;
     } else {
-        memset(str, '\0', 11);
-        sprintf(str, "%lu", value);
-
+        memset(str, ' ', 11);
+        str[11] = '\0';
+        sprintf((char *) Temp_String, "%lu", value);
+        while (Temp_String[DataCounter] != '\0') {
+            str[DataCounter] = Temp_String[DataCounter];
+            DataCounter++;
+        }
     }
     return ret;
 }
-
