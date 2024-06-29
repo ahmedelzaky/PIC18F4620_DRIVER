@@ -12,6 +12,7 @@
 
 #include "compilar.h"
 #include "std_libraries.h"
+#include <stdbool.h>
 
 /* Section: Macros */
 

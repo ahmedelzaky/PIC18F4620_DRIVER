@@ -90,6 +90,12 @@ void __interrupt() InterruptMAnger(void) {
         RB7_ISR(1);
     }
     /* ============ PortB External On Change Interrupt End ============ */
+
+    /* ============ Internal Interrupt Start ============ */
+    if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF)) {
+        ADC_ISR();
+    }
+    /* ============ Internal Interrupt End ============ */
 }
 
 #endif

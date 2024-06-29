@@ -21,6 +21,8 @@
 #include "ECU_Layer/lcd/ecu_lcd.h"
 #include "MCAL_Layer/interrupt/mcal_external_interrupt.h"
 #include "MCAL_Layer/EEPROM/hal_eeprom.h"
+#include "MCAL_Layer/ADC/hal_adc.h"
+
 
 /* Section: Macros */
 
