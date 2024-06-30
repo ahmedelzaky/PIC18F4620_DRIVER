@@ -1,3 +1,7 @@
 /debug
 /build
 /dist
+/.vscode
+/.generated-cmakefiles
+/_build_mplab
+/out

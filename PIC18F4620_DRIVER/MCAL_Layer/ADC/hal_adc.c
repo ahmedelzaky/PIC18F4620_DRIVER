@@ -53,8 +53,9 @@ Std_ReturnType ADC_DeInit(const adc_conf_t *_adc) {
         ret = E_NOT_OK;
     } else {
         ADC_CONVERTER_DISABLE();
+#if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
         ADC_InterruptDisable();
-
+#endif
     }
     return ret;
 }
@@ -187,10 +188,12 @@ static inline void configure_voltage_reference(const adc_conf_t *_adc) {
 }
 
 void ADC_ISR(void) {
+#if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
     ADC_InterruptFlagClear();
     if (ADC_InterruptHandler) {
         ADC_InterruptHandler();
     }
+#endif
 }
 
 

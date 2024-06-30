@@ -95,6 +95,9 @@ void __interrupt() InterruptMAnger(void) {
     if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF)) {
         ADC_ISR();
     }
+    if ((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_OCCUR == INTCONbits.TMR0IF)) {
+        TMR0_ISR();
+    }
     /* ============ Internal Interrupt End ============ */
 }
 

@@ -22,6 +22,7 @@
 #include "MCAL_Layer/interrupt/mcal_external_interrupt.h"
 #include "MCAL_Layer/EEPROM/hal_eeprom.h"
 #include "MCAL_Layer/ADC/hal_adc.h"
+#include "MCAL_Layer/TIMER0/hal_timer0.h"
 
 
 /* Section: Macros */
