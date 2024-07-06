@@ -7,6 +7,7 @@
 
 #include "Application.h"
 #include "MCAL_Layer/TIMER2/hal_timer2.h"
+#include "MCAL_Layer/TIMER3/hal_timer3.h"
 
 void timer1_app_isr(void);
 uint16_t frq = 0;
@@ -16,16 +17,14 @@ led_t led0 = {
     .pin = PIN0
 };
 
-timer2_t tmr = {
-    .TMR2_InterruptHandler = timer1_app_isr,
-    .timer2_postscaler_value = 0,
-    .timer2_preload_value = TIMER2_POSTSCALER_DIV_BY_1,
-    .timer2_prescaler_value = TIMER2_PRESCALER_DIV_BY_16,
+timer3_t tmr = {
+    .TMR3_InterruptHandler = timer1_app_isr,
+
 
 };
 
 void setup(void) {
-    Timer2_Init(&tmr);
+    Timer3_Init(&tmr);
     led_initialize(&led0);
 }
 
