@@ -17,6 +17,8 @@ static inline void Timer1_Mode_Select(const timer1_t *_timer);
 Std_ReturnType Timer1_Init(const timer1_t *_timer) {
     Std_ReturnType ret = E_OK;
     if (NULL == _timer) {
+        ret = E_NOT_OK;
+
     } else {
         TIMER1_MODULE_DISABLE();
 
@@ -49,6 +51,8 @@ Std_ReturnType Timer1_Init(const timer1_t *_timer) {
 Std_ReturnType Timer1_DeInit(const timer1_t *_timer) {
     Std_ReturnType ret = E_OK;
     if (NULL == _timer) {
+        ret = E_NOT_OK;
+
     } else {
         TIMER1_MODULE_DISABLE();
 #if TIMER1_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
@@ -61,6 +65,8 @@ Std_ReturnType Timer1_DeInit(const timer1_t *_timer) {
 Std_ReturnType Timer1_Write_Value(const timer1_t *_timer, uint16_t _value) {
     Std_ReturnType ret = E_OK;
     if (NULL == _timer) {
+        ret = E_NOT_OK;
+
     } else {
         TMR1H = (_value >> 8);
         TMR1L = (uint8_t) (_value);
@@ -71,6 +77,8 @@ Std_ReturnType Timer1_Write_Value(const timer1_t *_timer, uint16_t _value) {
 Std_ReturnType Timer1_Read_Value(const timer1_t *_timer, uint16_t *_value) {
     Std_ReturnType ret = E_OK;
     if (NULL == _timer && NULL == _value) {
+        ret = E_NOT_OK;
+
     } else {
         *_value = TMR1L;
         *_value += (uint16_t) (TMR1H << 8);

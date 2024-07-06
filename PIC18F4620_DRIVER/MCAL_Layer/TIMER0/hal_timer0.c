@@ -19,6 +19,7 @@ static inline void Timer0_Register_Size_Config(const timer0_t *_timer);
 Std_ReturnType Timer0_Init(const timer0_t *_timer) {
     Std_ReturnType ret = E_OK;
     if (NULL == _timer) {
+        ret = E_NOT_OK;
     } else {
         TIMER0_MODULE_DISABLE();
 
@@ -45,6 +46,7 @@ Std_ReturnType Timer0_Init(const timer0_t *_timer) {
 Std_ReturnType Timer0_DeInit(const timer0_t *_timer) {
     Std_ReturnType ret = E_OK;
     if (NULL == _timer) {
+        ret = E_NOT_OK;
     } else {
         TIMER0_MODULE_DISABLE();
     }
@@ -64,6 +66,7 @@ Std_ReturnType Timer0_Write_Value(const timer0_t *_timer, uint16_t _value) {
 Std_ReturnType Timer0_Read_Value(const timer0_t *_timer, uint16_t *_value) {
     Std_ReturnType ret = E_OK;
     if (NULL == _timer) {
+        ret = E_NOT_OK;
     } else {
         *_value = TMR0L;
         *_value += (uint16_t) (TMR0H << 8);

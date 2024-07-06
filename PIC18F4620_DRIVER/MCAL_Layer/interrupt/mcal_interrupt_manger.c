@@ -101,6 +101,9 @@ void __interrupt() InterruptMAnger(void) {
     if ((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF)) {
         TMR1_ISR();
     }
+    if ((INTERRUPT_ENABLE == PIE1bits.TMR2IE) && (INTERRUPT_OCCUR == PIR1bits.TMR2IF)) {
+        TMR2_ISR();
+    }
     /* ============ Internal Interrupt End ============ */
 }
 
