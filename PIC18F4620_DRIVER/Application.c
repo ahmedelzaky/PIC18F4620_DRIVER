@@ -7,24 +7,32 @@
 
 #include "Application.h"
 
-void timer0_app_isr(void);
+void timer1_app_isr(void);
+uint16_t frq = 0;
 
 led_t led0 = {
     .port = PORTC_INDEX,
     .pin = PIN0
 };
 
-timer0_t tmr = {
-    .TMR0_InterruptHandler = timer0_app_isr,
-    .prescaler_enable = TIMER0_PRESCALER_ENABLE_CFG,
-    .timer0_mode = TIMER0_TIMER_MODE,
-    .timer0_register_size = TIMER0_16BIT_REGISTER_MODE,
-    .prescaler_value = TIMER0_PRESCALER_DIV_BY_4,
-    .timer0_preload_value = 63036
+//timer1_t tmr = {
+//    .TMR1_InterruptHandler = timer1_app_isr,
+//    .timer1_mode = TIMER1_TIMER_MODE,
+//    .timer1_osc_cfg = TIMER1_OSCILLATOR_DISABLE,
+//    .timer1_reg_wr_mode = TIMER1_RW_REG_16Bit_MODE,
+//    .timer1_prescaler_value = TIMER1_PRESCALER_DIV_BY_2,
+//    .timer1_preload_value = 15536,
+//};
+timer1_t tmr = {
+    .TMR1_InterruptHandler = timer1_app_isr,
+    .timer1_mode = TIMER1_COUNTER_MODE,
+    .timer1_reg_wr_mode = TIMER1_RW_REG_16Bit_MODE,
+    .timer1_counter_mode = TIMER1_ASYNC_COUNTER_MODE,
+    .timer1_preload_value = 0,
 };
 
 void setup(void) {
-    Timer0_Init(&tmr);
+    Timer1_Init(&tmr);
     led_initialize(&led0);
 }
 
@@ -33,12 +41,15 @@ int main(void) {
     setup();
 
     while (1) {
+        __delay_ms(1000);
+        Timer1_Read_Value(&tmr, &frq);
+        Timer1_Write_Value(&tmr, 0);
 
     }
     return (EXIT_SUCCESS);
 
 }
 
-void timer0_app_isr(void) {
+void timer1_app_isr(void) {
     led_turn_toggle(&led0);
 }

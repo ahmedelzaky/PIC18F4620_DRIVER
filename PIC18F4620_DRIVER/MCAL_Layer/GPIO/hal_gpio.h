@@ -12,7 +12,7 @@
 #include "../device_config.h"
 #include "../mcal_std_types.h"
 #include "hal_gpio_config.h"
-#include <pic18f4620.h>
+#include <xc.h>
 
 /* Section: Macros */
 #define BIT_MASK (uint8_t)1

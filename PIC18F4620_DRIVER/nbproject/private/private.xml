@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/zekwa/Documents/myProjects/Master_Embedded_Diploma/PIC18F4620_DRIVER/MCAL_Layer/TIMER1/hal_timer1.c</file>
+            <file>file:/C:/Users/zekwa/Documents/myProjects/Master_Embedded_Diploma/PIC18F4620_DRIVER/MCAL_Layer/TIMER1/hal_timer1.h</file>
+            <file>file:/C:/Users/zekwa/Documents/myProjects/Master_Embedded_Diploma/PIC18F4620_DRIVER/Application.c</file>
+        </group>
     </open-files>
 </project-private>

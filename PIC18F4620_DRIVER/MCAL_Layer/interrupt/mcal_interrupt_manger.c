@@ -98,6 +98,9 @@ void __interrupt() InterruptMAnger(void) {
     if ((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_OCCUR == INTCONbits.TMR0IF)) {
         TMR0_ISR();
     }
+    if ((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF)) {
+        TMR1_ISR();
+    }
     /* ============ Internal Interrupt End ============ */
 }
 

@@ -50,6 +50,9 @@
         <logicalFolder name="TIMER0" displayName="TIMER0" projectFiles="true">
           <itemPath>MCAL_Layer/TIMER0/hal_timer0.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="TIMER1" displayName="TIMER1" projectFiles="true">
+          <itemPath>MCAL_Layer/TIMER1/hal_timer1.h</itemPath>
+        </logicalFolder>
         <itemPath>MCAL_Layer/std_libraries.h</itemPath>
         <itemPath>MCAL_Layer/compilar.h</itemPath>
         <itemPath>MCAL_Layer/mcal_std_types.h</itemPath>
@@ -104,6 +107,9 @@
         </logicalFolder>
         <logicalFolder name="TIMER0" displayName="TIMER0" projectFiles="true">
           <itemPath>MCAL_Layer/TIMER0/hal_timer0.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="TIMER1" displayName="TIMER1" projectFiles="true">
+          <itemPath>MCAL_Layer/TIMER1/hal_timer1.c</itemPath>
         </logicalFolder>
         <itemPath>MCAL_Layer/device_config.c</itemPath>
       </logicalFolder>
@@ -257,7 +263,7 @@
         <property key="oscillator.rcfrequency" value="250"/>
         <property key="oscillator.rcfrequencyunit" value="Kilo"/>
         <property key="periphADC1.altscl" value="false"/>
-        <property key="periphADC1.minTacq" value=""/>
+        <property key="periphADC1.minTacq" value="5"/>
         <property key="periphADC1.tacqunits" value="microseconds"/>
         <property key="periphADC2.altscl" value="false"/>
         <property key="periphADC2.minTacq" value=""/>
@@ -731,7 +737,7 @@
         <property key="oscillator.rcfrequency" value="250"/>
         <property key="oscillator.rcfrequencyunit" value="Kilo"/>
         <property key="periphADC1.altscl" value="false"/>
-        <property key="periphADC1.minTacq" value=""/>
+        <property key="periphADC1.minTacq" value="5"/>
         <property key="periphADC1.tacqunits" value="microseconds"/>
         <property key="periphADC2.altscl" value="false"/>
         <property key="periphADC2.minTacq" value=""/>

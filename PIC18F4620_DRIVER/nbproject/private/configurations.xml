@@ -12,7 +12,7 @@
       </mdbdebugger>
       <runprofile version="6">
         <args></args>
-        <rundir></rundir>
+        <rundir>.</rundir>
         <buildfirst>true</buildfirst>
         <console-type>0</console-type>
         <terminal-type>0</terminal-type>

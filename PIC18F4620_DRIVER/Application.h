@@ -23,6 +23,8 @@
 #include "MCAL_Layer/EEPROM/hal_eeprom.h"
 #include "MCAL_Layer/ADC/hal_adc.h"
 #include "MCAL_Layer/TIMER0/hal_timer0.h"
+#include "MCAL_Layer/TIMER1/hal_timer1.h"
+
 
 
 /* Section: Macros */
