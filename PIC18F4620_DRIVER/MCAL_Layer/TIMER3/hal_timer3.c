@@ -67,7 +67,7 @@ Std_ReturnType Timer3_Read_Value(const timer3_t *_timer, uint16_t *_value) {
         ret = E_NOT_OK;
     } else {
         *_value = TMR3L;
-        *_value = (uint16_t) (TMR3H << 8);
+        *_value += (uint16_t) (TMR3H << 8);
     }
     return ret;
 }
