@@ -106,16 +106,14 @@ static inline void Timer1_Mode_Select(const timer1_t *_timer) {
 
     }
 }
-
+#if TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
 void TMR1_ISR(void) {
     TIMER1_InterruptFlagClear();
     TMR1H = (timer1_preload >> 8);
     TMR1L = (uint8_t) (timer1_preload);
-#if TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
     if (TMR1_InterruptHandler) {
         TMR1_InterruptHandler();
     }
-#endif
 }
-
+#endif
 

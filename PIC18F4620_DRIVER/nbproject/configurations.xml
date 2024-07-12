@@ -33,6 +33,10 @@
           <itemPath>MCAL_Layer/ADC/hal_adc.h</itemPath>
           <itemPath>MCAL_Layer/ADC/hal_adc_cfg.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="CCP" displayName="CCP" projectFiles="true">
+          <itemPath>MCAL_Layer/CCP/ccp_cfg.h</itemPath>
+          <itemPath>MCAL_Layer/CCP/hal_ccp.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/hal_eeprom.h</itemPath>
         </logicalFolder>
@@ -73,6 +77,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="CCP" displayName="CCP" projectFiles="true">
+        <itemPath>MCAL_Layer/CCP/hal_ccp.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="ECU_Layer" displayName="ECU_Layer" projectFiles="true">
         <logicalFolder name="7_segment" displayName="7_segment" projectFiles="true">
           <itemPath>ECU_Layer/7_segment/ecu_seven_seg.c</itemPath>

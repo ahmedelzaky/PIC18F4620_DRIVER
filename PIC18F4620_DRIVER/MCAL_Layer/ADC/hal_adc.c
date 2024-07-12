@@ -187,14 +187,16 @@ static inline void configure_voltage_reference(const adc_conf_t *_adc) {
     }
 }
 
-void ADC_ISR(void) {
 #if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
+void ADC_ISR(void) {
     ADC_InterruptFlagClear();
     if (ADC_InterruptHandler) {
         ADC_InterruptHandler();
     }
-#endif
 }
+
+#endif
 
 
 

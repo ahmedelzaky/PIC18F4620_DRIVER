@@ -72,6 +72,8 @@ Std_ReturnType Timer3_Read_Value(const timer3_t *_timer, uint16_t *_value) {
     return ret;
 }
 
+#if (TIMER3_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
 void TMR3_ISR(void) {
     TIMER3_InterruptFlagClear();
     TMR3H = (timer3_preload) >> 8;
@@ -80,6 +82,8 @@ void TMR3_ISR(void) {
         TMR3_InterruptHandler();
     }
 }
+
+#endif
 
 static inline void Timer3_Mode_Select(const timer3_t *_timer) {
     if (TIMER3_TIMER_MODE == _timer->timer3_mode) {

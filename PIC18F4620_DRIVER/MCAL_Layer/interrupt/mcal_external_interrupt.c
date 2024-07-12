@@ -7,9 +7,15 @@
 
 #include "mcal_external_interrupt.h"
 
+#if (EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
 static void (*INT0_interruptHandler)(void) = NULL;
 static void (*INT1_interruptHandler)(void) = NULL;
 static void (*INT2_interruptHandler)(void) = NULL;
+
+#endif
+
+#if (EXTERNAL_INTERRUPT_OnChange_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
 
 static void (*RBX4_interruptHandler_LOW)(void) = NULL;
 static void (*RBX5_interruptHandler_LOW)(void) = NULL;
@@ -21,17 +27,34 @@ static void (*RBX5_interruptHandler_HIGH)(void) = NULL;
 static void (*RBX6_interruptHandler_HIGH)(void) = NULL;
 static void (*RBX7_interruptHandler_HIGH)(void) = NULL;
 
+#endif
+
+
+
+#if (EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
 static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Disable(const interrupt_INTx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INTx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Edge_Init(const interrupt_INTx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Pin_Init(const interrupt_INTx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Clear_Flag(const interrupt_INTx_t *int_obj);
-
 static Std_ReturnType Intx_handler_settetr(const interrupt_INTx_t *int_obj);
-static Std_ReturnType rbx_handler_settetr(const interrupt_RBx_t *int_obj);
 
+#endif
+
+
+
+#if (EXTERNAL_INTERRUPT_OnChange_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
+static Std_ReturnType rbx_handler_settetr(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj);
+
+#endif
+
+
+
+#if (EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
 
 Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *int_obj) {
     Std_ReturnType ret = E_OK;
@@ -239,6 +262,9 @@ void INT2_ISR(void) {
         INT2_interruptHandler();
     }
 }
+#endif
+
+#if (EXTERNAL_INTERRUPT_OnChange_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
 
 Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj) {
     Std_ReturnType ret = E_OK;
@@ -348,3 +374,4 @@ void RB7_ISR(uint8_t state) {
         RBX4_interruptHandler_HIGH();
     }
 }
+#endif

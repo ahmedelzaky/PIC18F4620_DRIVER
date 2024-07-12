@@ -37,6 +37,7 @@ void __interrupt(low_priority) InterruptMAngerLow(void) {
 
 void __interrupt() InterruptMAnger(void) {
     /* ============ INTx External On Change Interrupt Start ============ */
+#if (EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
 
     if (INTERRUPT_ENABLE == INTCONbits.INT0E && INTERRUPT_OCCUR == INTCONbits.INT0F) {
         INT0_ISR();
@@ -47,8 +48,12 @@ void __interrupt() InterruptMAnger(void) {
     if (INTERRUPT_ENABLE == INTCON3bits.INT2E && INTERRUPT_OCCUR == INTCON3bits.INT2F) {
         INT2_ISR();
     }
+
+#endif
     /* ============ INTx External Interrupt End ============ */
     /* ============ PortB External On Change Interrupt Start ============ */
+#if (EXTERNAL_INTERRUPT_OnChange_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
     if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) &&
             (PORTBbits.RB4 == HIGH) && (RB4_Flag == 1)) {
         RB4_Flag = 0;
@@ -89,24 +94,68 @@ void __interrupt() InterruptMAnger(void) {
         RB7_Flag = 1;
         RB7_ISR(1);
     }
+    
+#endif
     /* ============ PortB External On Change Interrupt End ============ */
 
     /* ============ Internal Interrupt Start ============ */
+#if (ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
     if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF)) {
         ADC_ISR();
     }
+    
+#endif
+
+#if (TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+    
     if ((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_OCCUR == INTCONbits.TMR0IF)) {
         TMR0_ISR();
     }
+    
+#endif
+    
+#if (TIMER1_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+    
     if ((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF)) {
         TMR1_ISR();
     }
+    
+#endif
+    
+#if (TIMER2_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+    
     if ((INTERRUPT_ENABLE == PIE1bits.TMR2IE) && (INTERRUPT_OCCUR == PIR1bits.TMR2IF)) {
         TMR2_ISR();
     }
+
+#endif
+    
+#if (TIMER3_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
     if ((INTERRUPT_ENABLE == PIE2bits.TMR3IE) && (INTERRUPT_OCCUR == PIR2bits.TMR3IF)) {
         TMR3_ISR();
     }
+
+#endif
+
+#if (CCP1_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
+    if ((INTERRUPT_ENABLE == PIE1bits.CCP1IE) && (INTERRUPT_OCCUR == PIR1bits.CCP1IF)) {
+        CCP1_ISR();
+    }
+
+#endif
+
+#if (CCP2_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
+
+    if ((INTERRUPT_ENABLE == PIE2bits.CCP2IE) && (INTERRUPT_OCCUR == PIR2bits.CCP2IF)) {
+        CCP2_ISR();
+    }
+
+#endif
+
+
     /* ============ Internal Interrupt End ============ */
 }
 

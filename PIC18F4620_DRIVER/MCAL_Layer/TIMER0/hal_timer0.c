@@ -104,15 +104,16 @@ static inline void Timer0_Register_Size_Config(const timer0_t *_timer) {
     }
 }
 
+#if TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
 void TMR0_ISR(void) {
     TIMER0_InterruptFlagClear();
     TMR0H = (timer0_preload >> 8);
     TMR0L = (timer0_preload & 0xFF);
-#if TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
     if (TMR0_InterruptHandler) {
         TMR0_InterruptHandler();
     }
-#endif
 }
 
+#endif
 

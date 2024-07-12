@@ -72,6 +72,8 @@ Std_ReturnType Timer2_Read_Value(const timer2_t *_timer, uint8_t *_value) {
     return ret;
 }
 
+#if TIMER2_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
 void TMR2_ISR(void) {
     TIMER2_InterruptFlagClear();
     TMR2 = timer2_preload;
@@ -79,3 +81,5 @@ void TMR2_ISR(void) {
         TMR2_InterruptHandler();
     }
 }
+
+#endif
