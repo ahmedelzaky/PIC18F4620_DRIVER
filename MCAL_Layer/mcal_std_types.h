@@ -31,6 +31,7 @@
 /* Section: Data Type Declarations */
 
 typedef uint8_t Std_ReturnType;
+typedef char* string;
 
 /* Section: Macro Functions */
 

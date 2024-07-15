@@ -27,6 +27,7 @@
 #include "MCAL_Layer/TIMER2/hal_timer2.h"
 #include "MCAL_Layer/TIMER3/hal_timer3.h"
 #include "MCAL_Layer/CCP/hal_ccp.h"
+#include "MCAL_Layer/USART/hal_usart.h"
 
 
 /* Section: Macros */

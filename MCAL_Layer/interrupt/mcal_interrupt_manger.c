@@ -94,7 +94,7 @@ void __interrupt() InterruptMAnger(void) {
         RB7_Flag = 1;
         RB7_ISR(1);
     }
-    
+
 #endif
     /* ============ PortB External On Change Interrupt End ============ */
 
@@ -104,33 +104,33 @@ void __interrupt() InterruptMAnger(void) {
     if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF)) {
         ADC_ISR();
     }
-    
+
 #endif
 
 #if (TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
-    
+
     if ((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_OCCUR == INTCONbits.TMR0IF)) {
         TMR0_ISR();
     }
-    
+
 #endif
-    
+
 #if (TIMER1_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
-    
+
     if ((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF)) {
         TMR1_ISR();
     }
-    
+
 #endif
-    
+
 #if (TIMER2_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
-    
+
     if ((INTERRUPT_ENABLE == PIE1bits.TMR2IE) && (INTERRUPT_OCCUR == PIR1bits.TMR2IF)) {
         TMR2_ISR();
     }
 
 #endif
-    
+
 #if (TIMER3_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE)
 
     if ((INTERRUPT_ENABLE == PIE2bits.TMR3IE) && (INTERRUPT_OCCUR == PIR2bits.TMR3IF)) {
@@ -154,6 +154,18 @@ void __interrupt() InterruptMAnger(void) {
     }
 
 #endif
+    
+#if EUSART_TX_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == PIE1bits.TXIE) && (INTERRUPT_OCCUR == PIR1bits.TXIF)) {
+        EUSART_TX_ISR();
+    }
+#endif
+#if EUSART_RX_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == PIE1bits.RCIE) && (INTERRUPT_OCCUR == PIR1bits.RCIF)) {
+        EUSART_RX_ISR();
+    }
+#endif
+
 
 
     /* ============ Internal Interrupt End ============ */
