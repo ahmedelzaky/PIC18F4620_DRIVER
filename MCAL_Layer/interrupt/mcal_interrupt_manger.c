@@ -154,20 +154,27 @@ void __interrupt() InterruptMAnger(void) {
     }
 
 #endif
-    
+
 #if EUSART_TX_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == PIE1bits.TXIE) && (INTERRUPT_OCCUR == PIR1bits.TXIF)) {
         EUSART_TX_ISR();
     }
 #endif
+    
 #if EUSART_RX_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == PIE1bits.RCIE) && (INTERRUPT_OCCUR == PIR1bits.RCIF)) {
         EUSART_RX_ISR();
     }
 #endif
 
-
-
+#if MSSP_I2C_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == PIE1bits.SSPIE) && (INTERRUPT_OCCUR == PIR1bits.SSPIF)) {
+        MSSP_I2C_ISR();
+    }
+    if ((INTERRUPT_ENABLE == PIE2bits.BCLIE) && (INTERRUPT_OCCUR == PIR2bits.BCLIF)) {
+        MSSP_I2C_BC_ISR();
+    }
+#endif
     /* ============ Internal Interrupt End ============ */
 }
 

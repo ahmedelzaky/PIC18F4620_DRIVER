@@ -28,6 +28,7 @@
 #include "MCAL_Layer/TIMER3/hal_timer3.h"
 #include "MCAL_Layer/CCP/hal_ccp.h"
 #include "MCAL_Layer/USART/hal_usart.h"
+#include "MCAL_Layer/I2C/hal_i2c.h"
 
 
 /* Section: Macros */
