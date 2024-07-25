@@ -160,7 +160,7 @@ void __interrupt() InterruptMAnger(void) {
         EUSART_TX_ISR();
     }
 #endif
-    
+
 #if EUSART_RX_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == PIE1bits.RCIE) && (INTERRUPT_OCCUR == PIR1bits.RCIF)) {
         EUSART_RX_ISR();
@@ -173,6 +173,12 @@ void __interrupt() InterruptMAnger(void) {
     }
     if ((INTERRUPT_ENABLE == PIE2bits.BCLIE) && (INTERRUPT_OCCUR == PIR2bits.BCLIF)) {
         MSSP_I2C_BC_ISR();
+    }
+#endif
+
+#if MSSP_SPI_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == PIE1bits.SSPIE) && (INTERRUPT_OCCUR == PIR1bits.SSPIF)) {
+        MSSP_SPI_ISR();
     }
 #endif
     /* ============ Internal Interrupt End ============ */

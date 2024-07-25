@@ -29,6 +29,7 @@
 #include "MCAL_Layer/CCP/hal_ccp.h"
 #include "MCAL_Layer/USART/hal_usart.h"
 #include "MCAL_Layer/I2C/hal_i2c.h"
+#include "MCAL_Layer/SPI/hal_spi.h"
 
 
 /* Section: Macros */
